@@ -7,16 +7,19 @@ int main(void)
 {
 	int myInt;
 	char myChar;
-	long myLong;
-	short myShort;
+	long int myLongInt;
+	float muFloat;
+	long long  int myLongLongInt;
 	
-	printf("The sixe of a char is : %lu\n", sizeof(char));
+	printf("Size of a char is : %lu\n", sizeof(char));
 	
-	printf("The sixe of a int is : %lu\n", sizeof(int));
+	printf("Size of an int is : %lu\n", sizeof(int));
 
-	printf("The sixe of a long is : %lu\n", sizeof(long));
+	printf("Size of a long int is : %lu\n", sizeof(myLongInt));
 
-	printf("The sixe of a short is : %lu\n", sizeof(short));
+	printf("Size of a long long int is : %lu\n", sizeof(myLongLongInt));
+
+	printf("Size of a float is : %lu\n", sizeof(myFloat));
 
 	return (0);
 }
