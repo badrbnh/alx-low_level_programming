@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 int main(void) /**
-		* Hello, puts
+		*main-Entry point
+		*return:Always 0 (Success)
 		*/
 {
 
