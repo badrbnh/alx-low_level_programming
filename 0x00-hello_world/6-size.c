@@ -8,7 +8,7 @@ int main(void)
 	int myInt;
 	char myChar;
 	long int myLongInt;
-	float muFloat;
+	float myFloat;
 	long long  int myLongLongInt;
 	
 	printf("Size of a char is : %lu\n", sizeof(char));
