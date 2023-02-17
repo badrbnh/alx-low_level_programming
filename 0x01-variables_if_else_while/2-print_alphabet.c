@@ -1,4 +1,4 @@
-#include <stdio>
+#include <stdio.h>
 /**
  * main - prints tha alphabet in lowercase
  *
@@ -9,11 +9,11 @@
 
 	{ int x;
 
-		for (x = a; x <= z; x++)
+		for (x = 'a'; x <= 'z'; x++)
 		{
 
 			putchar(x);
-			putchar(\n);
+			putchar('\n');
 
 			return (0);
 		}
