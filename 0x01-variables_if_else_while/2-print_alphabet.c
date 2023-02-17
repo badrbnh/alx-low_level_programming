@@ -13,6 +13,7 @@
 		{
 
 			putchar(x);
+			putchar('\0');
 		}
 	return (0);
 }
