@@ -1,25 +1,27 @@
 #include <stdio.h>
+
 /**
- * main - prints all numbers of base 16 in lowercase.
+ * main - program that prints all single digit numbers of base 10
  *
  * Return: 0
 */
-int main(void)
-{
-	char i = '0';
-	char k = 'a';
 
-	while (i <= '9')
+	int main(void)
 	{
-		putchar(i);
-		i++;
-	}
-	while (k < 'g')
-	{
-		putchar(k);
-		k++;
-	}
-		putchar('\n');	
+		char i = '0';
+		char k = 'a';
 
-	return (0);
-}
+		while (i <= '9')
+		{
+			putchar(i);
+			i++;
+		}
+		while (k < 'g')
+		{
+			putchar(k);
+			k++;
+		}
+			putchar('\n');
+
+		return (0);
+		}
