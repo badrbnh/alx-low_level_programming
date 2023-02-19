@@ -10,9 +10,10 @@
 	{
 		char i = 'a';
 
-		for (; i <= 'z'; i++)
+		while (i <= 'z')
 		{
 			putchar(i);
+			i++;
 		}
 
 		putchar('\n');
