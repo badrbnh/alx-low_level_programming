@@ -25,7 +25,7 @@ void print_number(int n)
 	{
 		_putchar(n + 48);
 	}
-	else if ( n >= 10)
+	else if (n >= 10)
 	{
 		print_number(n / 10);
 		print_number(n % 10);
