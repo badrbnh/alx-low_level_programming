@@ -1,44 +1,47 @@
-#include <string.h>
 #include "main.h"
-/**
- * infinite_add - adds two numbers.
- * @n1: Firsr number.
- * @n2: Second number.
- * @r: Buffer
- * @size_r: buffer size
- * Return: 0
- */
 
+/**
+ * infinite_add - adds two numbers
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer for result
+ * @size_r: buffer size
+ * ahhh! Crazy task! Expand your knowledge
+ * Return: address of r or 0
+ */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
+	int i, j, k, l, m, n;
 
-	int carry = 0, sum = 0, len1 = strlen(n1), len2 = strlen(n2);
-	int i = len1 - 1, j = len2 - 1, k = size_r - 1;
-
-	r[k] = '\0';
-
-	while (i >= 0 || j >= 0)
-	{
-		int digit1 = i >= 0 ? n1[i] - '0' : 0;
-		int digit2 = j >= 0 ? n2[j] - '0' : 0;
-
-		sum = digit1 + digit2 + carry;
-		carry = sum / 10;
-		if (k <= 0)
-			return (0);
-		r[k--] = (sum % 10) + '0';
-		i--;
-		j--;
-	}
-	if (carry)
-	{
-		if (k <= 0)
-			return (0);
-		r[k--] = carry + '0';
-	}
-	if (k < 0)
+	for (i = 0; n1[i]; i++)
+		;
+	for (j = 0; n2[j]; j++)
+		;
+	if (i > size_r || j > size_r)
 		return (0);
-
-	memmove(r, &r[k + 1], size_r - k - 1);
+	m = 0;
+	for (i -= 1, j -= 1, k = 0; k < size_r - 1; i--, j--, k++)
+	{
+		n = m;
+		if (i >= 0)
+			n += n1[i] - '0';
+		if (j >= 0)
+			n += n2[j] - '0';
+		if (i < 0 && j < 0 && n == 0)
+		{
+			break;
+		}
+		m = n / 10;
+		r[k] = n % 10 + '0';
+	}
+	r[k] = '\0';
+	if (i >= 0 || j >= 0 || m)
+		return (0);
+	for (k -= 1, l = 0; l < k; k--, l++)
+	{
+		m = r[k];
+		r[k] = r[l];
+		r[l] = m;
+	}
 	return (r);
 }
