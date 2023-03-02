@@ -1,83 +1,43 @@
-#include "holberton.h"
-
-char *add_strings(char *n1, char *n2, char *r, int r_index);
-char *infinite_add(char *n1, char *n2, char *r, int size_r);
-
+#include <string.h>
 /**
- * add_strings - Adds the numbers stored in two strings.
- * @n1: The string containing the first number to be added.
- * @n2: The string containing the second number to be added.
- * @r: The buffer to store the result.
- * @r_index: The current index of the buffer.
- *
- * Return: If r can store the sum - a pointer to the result.
- *         If r cannot store the sum - 0.
- */
-
-char *add_strings(char *n1, char *n2, char *r, int r_index)
-{
-	int num, tens = 0;
-
-	for (; *n1 && *n2; n1--, n2--, r_index--)
-	{
-		num = (*n1 - '0') + (*n2 - '0');
-		num += tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	for (; *n1; n1--, r_index--)
-	{
-		num = (*n1 - '0') + tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	for (; *n2; n2--, r_index--)
-	{
-		num = (*n2 - '0') + tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens = num / 10;
-	}
-
-	if (tens && r_index >= 0)
-	{
-		*(r + r_index) = (tens % 10) + '0';
-		return (r + r_index);
-	}
-
-	else if (tens && r_index < 0)
-		return (0);
-
-	return (r + r_index + 1);
-}
-/**
- * infinite_add - Adds two numbers.
- * @n1: The first number to be added.
- * @n2: The second number to be added.
- * @r: The buffer to store the result.
- * @size_r: The buffer size.
- *
- * Return: If r can store the sum - a pointer to the result.
- *         If r cannot store the sum - 0.
+ * infinite_add - adds two numbers.
+ * @n1: Firsr number.
+ * @n2: Second number.
+ * @r: Buffer
+ * @size_r: buffer size
+ * Return: 0
  */
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int index, n1_len = 0, n2_len = 0;
 
-	for (index = 0; *(n1 + index); index++)
-		n1_len++;
+	int carry = 0, sum = 0, len1 = strlen(n1), len2 = strlen(n2);
+	int i = len1 - 1, j = len2 - 1, k = size_r - 1;
 
-	for (index = 0; *(n2 + index); index++)
-		n2_len++;
+	r[k] = '\0';
 
-	if (size_r <= n1_len + 1 || size_r <= n2_len + 1)
+	while (i >= 0 || j >= 0)
+	{
+		int digit1 = i >= 0 ? n1[i] - '0' : 0;
+		int digit2 = j >= 0 ? n2[j] - '0' : 0;
+
+		sum = digit1 + digit2 + carry;
+		carry = sum / 10;
+		if (k <= 0)
+			return (0);
+		r[k--] = (sum % 10) + '0';
+		i--;
+		j--;
+	}
+	if (carry)
+	{
+		if (k <= 0)
+			return (0);
+		r[k--] = carry + '0';
+	}
+	if (k < 0)
 		return (0);
 
-	n1 += n1_len - 1;
-	n2 += n2_len - 1;
-	*(r + size_r) = '\0';
-
-	return (add_strings(n1, n2, r, --size_r));
+	memmove(r, &r[k + 1], size_r - k - 1);
+	return (r);
 }
