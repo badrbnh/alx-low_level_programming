@@ -2,7 +2,7 @@
 /**
  * factorial - returns the factorial of a given number.
  * @n: Argument
- * Retrun : returns the factorial of a given number.
+ * Return: returns the factorial of a given number.
  */
 
 int factorial(int n)
@@ -12,8 +12,8 @@ int factorial(int n)
 		return (1);
 	}
 
-	if (n < 0 )
-		return (-1) ;
+	if (n < 0)
+		return (-1);
 
 	return (n * factorial(n - 1));
 }
